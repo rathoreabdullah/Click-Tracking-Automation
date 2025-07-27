@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Tagger Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background: #343a40;
+            color: #fff;
+            padding: 1.5rem 2rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background: #f5f7fa;
+        }
+        fieldset {
+            border: 1px solid #bfc9d1;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        legend {
+            font-weight: bold;
+            color: #495057;
+            padding: 0 0.5rem;
+        }
+        label {
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        input, select, textarea, button {
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #bfc9d1;
+            font-size: 1rem;
+        }
+        button, .btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:disabled {
+            background: #adb5bd;
+            cursor: not-allowed;
+        }
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-icon svg {
+            margin-right: 0.5em;
+        }
+        .stats {
+            background: #e9ecef;
+            padding: 1rem;
+            margin: 2rem 0 0 0;
+            border-radius: 8px;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DOM Tagger Demo & Test Suite</h1>
+    </header>
+    <main>
+        <section class="test-section" aria-labelledby="nav-section">
+            <h2 id="nav-section">Navigation Elements</h2>
+            <nav>
+                <a href="#home" aria-label="Home Page">Home Link</a>
+                <a href="https://google.com" target="_blank" rel="noopener" aria-label="Google Search">External Link</a>
+                <a href="/download.pdf" title="Download PDF">Download Link</a>
+            </nav>
+        </section>
+
+        <section class="test-section" aria-labelledby="btn-section">
+            <h2 id="btn-section">Button Elements</h2>
+            <button>Submit Form</button>
+            <button class="btn-icon" aria-label="Delete Item">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M5.5 5.5v6h1v-6h-1zm2 0v6h1v-6h-1z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H14a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3a.5.5 0 0 0 0 1H3v9a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V4h.5a.5.5 0 0 0 0-1h-11z"/></svg>
+                Delete Item
+            </button>
+            <button disabled title="Disabled button">Disabled</button>
+            <button class="btn" aria-label="Search">Search</button>
+            <button class="btn" aria-label="Close">Close</button>
+        </section>
+
+        <section class="test-section" aria-labelledby="span-section">
+            <h2 id="span-section">Span Elements</h2>
+            <span role="button" aria-label="Click Me Button">Click Me</span>
+            <span>Status: <span aria-label="Active Status">Active</span></span>
+            <span>Badge: <span aria-label="Badge Count">3</span></span>
+        </section>
+
+        <section class="test-section" aria-labelledby="form-section">
+            <h2 id="form-section">Form Context</h2>
+            <form aria-label="Demo Form">
+                <fieldset>
+                    <legend>Actions</legend>
+                    <button type="submit">Save</button>
+                    <button type="button">Cancel</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section class="test-section" aria-labelledby="input-section">
+            <h2 id="input-section">New Input &amp; UI Patterns</h2>
+            <form aria-label="Input Patterns">
+                <fieldset>
+                    <legend>Selection Controls</legend>
+                    <input type="checkbox" id="check1" aria-label="Enable Option">
+                    <label for="check1">Checkbox</label><br>
+                    <input type="radio" name="group1" id="radio1" aria-label="Radio Option 1">
+                    <label for="radio1">Radio 1</label>
+                    <input type="radio" name="group1" id="radio2" aria-label="Radio Option 2">
+                    <label for="radio2">Radio 2</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Text &amp; Numeric Inputs</legend>
+                    <label for="text1">Text input</label>
+                    <input type="text" id="text1" placeholder="Type here..." aria-label="Text Input"><br>
+                    <label for="num1">Quantity</label>
+                    <input type="number" class="quantity" id="num1" value="1" aria-label="Quantity Input"><br>
+                    <label for="range1">Slider</label>
+                    <input type="range" id="range1" aria-label="Slider Input"><br>
+                    <label for="file1">File Upload</label>
+                    <input type="file" id="file1" aria-label="File Upload"><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Dropdowns</legend>
+                    <label for="select1">Choose an option</label>
+                    <select id="select1" aria-label="Choose an option">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                    </select><br>
+                    <label for="custom-dropdown">Custom Dropdown</label>
+                    <ul id="custom-dropdown" role="presentation">
+                        <li data-value="10" aria-selected="true" class="selected">Ten</li>
+                        <li data-value="20">Twenty</li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>Other Controls</legend>
+                    <label for="textarea1">Comments</label>
+                    <textarea id="textarea1" placeholder="Type here..." aria-label="Comments"></textarea><br>
+                    <div role="switch" aria-checked="false" tabindex="0">Switch Role</div>
+                    <div role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">Slider Role</div>
+                    <button class="toggle" aria-label="Toggle Button">Toggle Button</button>
+                    <span class="quantity" aria-label="Quantity Stepper">Quantity Stepper</span>
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="stats" class="stats" aria-live="polite">
+            <h3>Test Results</h3>
+            <p>Check browser console (F12) for detailed logs</p>
+        </section>
+
+        <section class="test-section" aria-labelledby="dynamic-section">
+            <h2 id="dynamic-section">Dynamic Content Test</h2>
+            <p>These buttons will appear after different time delays to test click-based tagging:</p>
+            <div id="dynamic-buttons"></div>
+        </section>
+
+        <section class="test-section" aria-labelledby="navigation-test-section">
+            <h2 id="navigation-test-section">Navigation Test</h2>
+            <p>Test links to verify tagging works with navigation:</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://httpbin.org/get" target="_blank" rel="noopener" class="btn">Test GET Request</a>
+                <a href="https://httpbin.org/status/200" target="_blank" rel="noopener" class="btn">Test Status 200</a>
+                <a href="https://httpbin.org/delay/2" target="_blank" rel="noopener" class="btn">Test Delay (2s)</a>
+                <a href="https://httpbin.org/headers" target="_blank" rel="noopener" class="btn">Test Headers</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                <strong>Note:</strong> These links open in new tabs. Check the console before clicking to see tagging in action.
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 DOM Tagger Demo. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import DOMTagger from "../browser/tagger.mjs";
+        
+        const tagger = new DOMTagger({
+          debug: true,
+          selectors: [
+            "a",
+            "button",
+            "span",
+            "input",
+            "select",
+            "textarea",
+            "div[role='switch']",
+            "div[role='slider']",
+            "label",
+            "div[role='option']"
+          ]
+        });
+        tagger.init();
+        
+        // Display results after a short delay
+        setTimeout(() => {
+            const stats = tagger.getStats();
+            const taggedElements = tagger.getTaggedElements();
+            
+            // Update the stats div
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <h3>✅ Test Results - SUCCESS!</h3>
+                <p><strong>Total elements:</strong> ${stats.total}</p>
+                <p><strong>Tagged elements:</strong> ${stats.tagged}</p>
+                <p><strong>Types found:</strong> ${Object.keys(stats.types).join(', ')}</p>
+                <p><strong>Actions found:</strong> ${Object.keys(stats.actions).join(', ')}</p>
+                <p><strong>Contexts found:</strong> ${Object.keys(stats.contexts).join(', ')}</p>
+                <p>Check browser console (F12) for detailed logs</p>
+            `;
+            
+        }, 1000);
+
+        // Dynamic content test - buttons that appear after delays
+        const dynamicButtonsContainer = document.getElementById('dynamic-buttons');
+        
+        // Button 1: Appears after 3 seconds
+        setTimeout(() => {
+            const button1 = document.createElement('button');
+            button1.textContent = 'Dynamic Button 1 (3s delay)';
+            button1.className = 'btn';
+            button1.style.margin = '0.5rem';
+            dynamicButtonsContainer.appendChild(button1);
+            console.log("🔵 Dynamic Button 1 added (should NOT be pre-tagged)");
+        }, 3000);
+        
+        // Button 2: Appears after 5 seconds  
+        setTimeout(() => {
+            const button2 = document.createElement('button');
+            button2.textContent = 'Dynamic Button 2 (5s delay)';
+            button2.className = 'btn';
+            button2.style.margin = '0.5rem';
+            dynamicButtonsContainer.appendChild(button2);
+            console.log("🟡 Dynamic Button 2 added (should NOT be pre-tagged)");
+        }, 5000);
+        
+        // Button 3: Appears after 8 seconds
+        setTimeout(() => {
+            const button3 = document.createElement('button');
+            button3.textContent = 'Dynamic Button 3 (8s delay)';
+            button3.className = 'btn';
+            button3.style.margin = '0.5rem';
+            dynamicButtonsContainer.appendChild(button3);
+            console.log("🟢 Dynamic Button 3 added (should NOT be pre-tagged)");
+        }, 8000);
+        
+        // Initialize dataLayer for testing
+        window.dataLayer = window.dataLayer || [];
+        
+        // Add a test button to manually check data layer
+        const testButton = document.createElement('button');
+        testButton.textContent = 'Test Data Layer Push';
+        testButton.className = 'btn';
+        testButton.style.margin = '1rem';
+        testButton.onclick = () => {
+          console.log('🧪 Manual data layer test...');
+          console.log('Current data layer:', window.dataLayer);
+          console.log('Data layer length:', window.dataLayer?.length);
+          if (window.dataLayer && window.dataLayer.length > 0) {
+            console.log('Last event:', window.dataLayer[window.dataLayer.length - 1]);
+          }
+        };
+        document.querySelector('main').appendChild(testButton);
+    </script>
+</body>
+</html> 
