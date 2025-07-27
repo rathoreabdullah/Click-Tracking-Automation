@@ -12,7 +12,7 @@ Eliminate manual analytics setup with automated DOM tagging and click tracking. 
 - **Zero manual setup** - leverages existing semantic information in your DOM
 
 **Enterprise Impact:**
-At scale, this eliminates 2+ hours of manual telemetry/analytics work per project while adding only ~2ms to page load time. For large enterprises, this translates to **$MM+ in annual savings** through automated click tracking across marketing campaigns, product features, and A/B tests.
+At scale, this eliminates 2+ hours of manual telemetry/analytics work per project while adding only ~2ms to page load time. For large enterprises, this translates to numerous dev hours saved through automated click tracking across marketing campaigns, product features, and A/B tests.
 
 
 ## Who is this for?
