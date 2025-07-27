@@ -240,15 +240,24 @@
             
             // Update the stats div
             const statsDiv = document.getElementById('stats');
-            statsDiv.innerHTML = `
-                <h3>✅ Test Results - SUCCESS!</h3>
-                <p><strong>Total elements:</strong> ${stats.total}</p>
-                <p><strong>Tagged elements:</strong> ${stats.tagged}</p>
-                <p><strong>Types found:</strong> ${Object.keys(stats.types).join(', ')}</p>
-                <p><strong>Actions found:</strong> ${Object.keys(stats.actions).join(', ')}</p>
-                <p><strong>Contexts found:</strong> ${Object.keys(stats.contexts).join(', ')}</p>
-                <p>Check browser console (F12) for detailed logs</p>
-            `;
+            statsDiv.textContent = ''; // Clear content safely
+            
+            const title = document.createElement('h3');
+            title.textContent = '✅ Test Results - SUCCESS!';
+            statsDiv.appendChild(title);
+            
+            const createParagraph = (text) => {
+              const p = document.createElement('p');
+              p.textContent = text;
+              return p;
+            };
+            
+            statsDiv.appendChild(createParagraph(`Total elements: ${stats.total}`));
+            statsDiv.appendChild(createParagraph(`Tagged elements: ${stats.tagged}`));
+            statsDiv.appendChild(createParagraph(`Types found: ${Object.keys(stats.types).join(', ')}`));
+            statsDiv.appendChild(createParagraph(`Actions found: ${Object.keys(stats.actions).join(', ')}`));
+            statsDiv.appendChild(createParagraph(`Contexts found: ${Object.keys(stats.contexts).join(', ')}`));
+            statsDiv.appendChild(createParagraph('Check browser console (F12) for detailed logs'));
             
         }, 1000);
 
