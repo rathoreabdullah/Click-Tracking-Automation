@@ -1,7 +1,6 @@
 # Automated Click Tracking & Analytics
 
-**Author:** Abdullah Rathore  
-**LinkedIn:** [Abdullah Rathore](https://www.linkedin.com/in/abdullah-rathore-2460a3170/)
+**Author:** [Abdullah Rathore](https://www.linkedin.com/in/abdullah-rathore-2460a3170/)
 
 Eliminate manual analytics setup with automated DOM tagging and click tracking. This tool automatically identifies interactive elements, adds standardized data attributes, and captures user interactions for analytics platforms like Google Tag Manager, Tealium, Adobe Launch, and fully first party custom solutions.
 
